@@ -1,0 +1,26 @@
+<div class="row" style="border: 1px solid rgb(179, 179, 179); padding: 2vh;margin: 5px 5px 5px 5vh;">
+    <div class="col">
+        <button type="button" class="btn-close float-end" (click)="removee()"></button>
+        <h5 class="card-title">{{team.city}} {{team.name}} [{{team.abbreviation}}]</h5>
+        <h6>{{team.conference}}ern conference</h6>
+        <hr/>
+        <div class="row">
+            <div class="col-6">
+                <div>Results of past 12 days:</div>
+                <span *ngFor="let game of team.gameHistory?.games">
+                    <span class="badge bg-success" [hidden]="game.teamScore <= game.opposingTeamScore" style="margin: 2px;">W</span>
+                    <span class="badge bg-danger" [hidden]="game.teamScore >= game.opposingTeamScore" style="margin: 2px;">L</span>
+                </span>
+                <p>Avg pts scored: <b>{{team.gameHistory?.averageScore | number: '1.0-0'}}</b></p>
+                <p>Avg pts conceded: <b>{{team.gameHistory?.averageConceded | number: '1.0-0'}}</b></p>
+            </div>
+            <div class="col">
+                <img [src]="'https://interstate21.com/nba-logos/' + team.abbreviation + '.png'" width="200" />
+            </div>
+        </div>
+        <button class="btn btn-success" (click)="result()" [routerLink]="['/results', team.id]">See game results >></button>
+    </div>
+</div>
+
+
+

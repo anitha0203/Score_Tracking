@@ -1,0 +1,13 @@
+<div  style="margin: 5vh;width: 50vh;">
+    <h2>NBA Score Tracking App</h2>
+    <div *ngIf="dataa" style="border: 1px solid grey;padding:2vh;">
+        <h5>{{dat.city}} {{dat.name}} [{{dat.abbreviation}}]</h5>
+        <h6>{{dat.conference}}ern conference</h6>
+        <hr/>
+        <p>Scores of past 12 days:</p>
+        <div *ngFor="let data of dataa">
+          <b>{{data.team.abbreviation}}</b> {{data.teamScore}} - {{data.opposingTeamScore}} <b>{{data.opposingTeam.abbreviation}}</b>
+        </div>
+        <button id="backBtn" style="margin-top: 2vh;" class="btn btn-success" [routerLink]="['']"><< Back to all team stats</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div style="margin: 2vh;">
+  <h2>NBA Score Tracking App</h2>
+  <form (ngSubmit)="getTeam(teamss)">
+    <select id="teamInput" name="selectedTeam" [(ngModel)]="teamss" style="margin: 5px 2vh;" >
+       <option *ngFor="let team of teamData" [ngValue]="team">{{team.city}} {{team.name}}</option>
+    </select>
+    <button type="submit" id="trackBtn" class="btn btn-primary" id="trackBtn">Track team</button>
+  </form>
+
+  <div class="row" style="margin-top: 2vh;">
+    <div class="col-4" *ngFor="let team of teamDataa">
+      <app-track [team]="team" (remove)="remove($event)" (results)="storeData()"></app-track> 
+    </div>
+  </div>
+</div>
