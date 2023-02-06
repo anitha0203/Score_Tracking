@@ -8,8 +8,8 @@
             <div class="col-6">
                 <div>Results of past 12 days:</div>
                 <span *ngFor="let game of team.gameHistory?.games">
-                    <span class="badge bg-success" [hidden]="game.teamScore <= game.opposingTeamScore" style="margin: 2px;">W</span>
-                    <span class="badge bg-danger" [hidden]="game.teamScore >= game.opposingTeamScore" style="margin: 2px;">L</span>
+                    <span class="badge bg-success" *ngIf="game.teamScore >= game.opposingTeamScore" style="margin: 2px;">W</span>
+                    <span class="badge bg-danger" *ngIf="game.teamScore < game.opposingTeamScore" style="margin: 2px;">L</span>
                 </span>
                 <p>Avg pts scored: <b>{{team.gameHistory?.averageScore | number: '1.0-0'}}</b></p>
                 <p>Avg pts conceded: <b>{{team.gameHistory?.averageConceded | number: '1.0-0'}}</b></p>
